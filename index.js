@@ -27,5 +27,12 @@ new Vue({
   computed: {},
   created() {
     this.getData();
+  },
+  mounted() {
+    document.querySelectorAll("[data-fancybox]").forEach(element => {
+      element.fancybox({
+        buttons: ["close"]
+      });
+    });
   }
 });
