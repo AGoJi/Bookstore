@@ -2,7 +2,8 @@ new Vue({
   el: "#vue-app",
   data: {
     books: [],
-    cover: []
+    cover: [],
+    search: ""
   },
   methods: {
     getData() {
@@ -24,15 +25,17 @@ new Vue({
         });
     }
   },
-  computed: {},
+  computed: {
+    filteredBooks: function() {
+      return this.books.filter(book => {
+        return (
+          book.title.includes(this.search) ||
+          book.description.includes(this.search)
+        );
+      });
+    }
+  },
   created() {
     this.getData();
-  },
-  mounted() {
-    document.querySelectorAll("[data-fancybox]").forEach(element => {
-      element.fancybox({
-        buttons: ["close"]
-      });
-    });
   }
 });

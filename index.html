@@ -15,17 +15,30 @@
   </head>
   <body>
     <div id="vue-app">
-      <div v-for="book in books" class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img class="coverIMG" v-bind:src="book.cover" alt="Cover" />
-          </div>
-          <div class="flip-card-back">
-            <h1>{{ book.title }}</h1>
-            <p>{{ book.description }}</p>
-            <a data-fancybox="gallery" v-bind:href="book.detail">
-              <button>More info</button>
-            </a>
+      <div class="header">
+        <img src="UBSlogo.png" alt="Logo" class="logo" />
+        <div class="flexSearch">
+          <input
+            type="text"
+            v-model="search"
+            placeholder="Search books"
+            class="searchBar"
+          />
+        </div>
+      </div>
+      <div class="flexBooks">
+        <div v-for="book in filteredBooks" class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img class="coverIMG" v-bind:src="book.cover" alt="Cover" />
+            </div>
+            <div class="flip-card-back">
+              <h1 class="margin">{{ book.title }}</h1>
+              <p class="margin">{{ book.description }}</p>
+              <a data-fancybox="gallery" v-bind:href="book.detail">
+                <button>More info</button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
